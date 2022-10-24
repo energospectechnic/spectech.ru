@@ -12,7 +12,7 @@ if(CModule::IncludeModule("iblock")) {
 	}
 }
 
-if(strlen($_POST["list"]) > 0) $arStr = split("\n", $_POST["list"]);
+if(strlen($_POST["list"]) > 0) $arStr = explode("\n", $_POST["list"]);
 
 $IBlockID = intval($_POST["iblock"]);;
 
@@ -91,7 +91,7 @@ if(count($arStr) > 0 && $IBlockID > 0) {
 <form action="/section_import.php" method="post">
 	<select name="iblock" style="width:300px;">
 	<?php foreach($arIBlocks as $arItem):?>
-		<option value="<?php =$arItem["ID"]?>"<?php if(intval($_POST["iblock"])==$arItem["ID"]) echo 'selected="selected"';?>><?=$arItem["IBLOCK_TYPE"]?> - <?=$arItem["NAME"]?></option>
+        <option value="<?=$arItem["ID"]?>"<?if(intval($_POST["iblock"])==$arItem["ID"]) echo 'selected="selected"';?>><?=$arItem["IBLOCK_TYPE"]?> - <?=$arItem["NAME"]?></option>
 	<?php endforeach; ?>
 	</select><br />
 	<textarea name="list" style="width:300px; height:150px;"><?php if($_POST["list"]) echo $_POST["list"];?></textarea><br />
